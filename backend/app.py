@@ -8,7 +8,6 @@ import sys
 app = Flask(__name__)
 CORS(app)
 
-# Global engine instances
 engine = None
 rewrite_engine = None
 
@@ -16,22 +15,20 @@ def initialize_engine():
     global engine, rewrite_engine
     
     try:
-        # Validate model path from config
+
         Config.validate_model_path()
         model_path = Config.MODEL_PATH
         
         print("\n" + "=" * 60)
         print("Initializing AI Text Detection Engine")
         print("=" * 60)
-        
-        # Create detection engine
+
         engine = InferenceEngine(model_path=model_path)
         
         print("=" * 60)
         print("[OK] Detection engine ready")
         print("=" * 60 + "\n")
         
-        # Try to load rewrite engine (optional)
         try:
             print("=" * 60)
             print("Initializing Rewrite Engine")
@@ -146,7 +143,6 @@ def health():
     }), 200
 
 if __name__ == '__main__':
-    # Initialize engine before starting server
     if not initialize_engine():
         print("FATAL: Cannot start server without model.")
         print("\nUsage:")

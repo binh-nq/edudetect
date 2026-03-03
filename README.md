@@ -17,8 +17,6 @@ Hệ thống API backend phục vụ 2 chức năng chính:
 
 ## 🗂 Cấu trúc thư mục
 
-Dự án đã được tối giản hóa phục vụ môi trường Production (chạy thực tế):
-
 ```text
 nckh_new/
 ├── backend/
@@ -30,7 +28,7 @@ nckh_new/
 │   ├── rewrite_loader.py       # Thread-safe tải mô hình ViT5
 │   └── text_processor.py       # Logic xử lý text, tách câu (dùng Underthesea)
 │
-├── requirements.txt            # Danh sách thư viện Python cần thiết
+├── requirements.txt            
 ├── .gitignore
 └── README.md
 ```
@@ -124,18 +122,4 @@ Kiểm tra xem một văn bản có bị thao túng bởi AI hay không.
 {
   "rewritten": "Đoạn code phân loại câu tiếng Việt là thứ bạn đang tìm kiếm."
 }
-```
-
----
-
-## � Tùy chỉnh hệ thống (Configuration)
-Bạn có thể tùy chỉnh các hằng số logic hoặc đổi Model Repository trong file `backend/config.py`:
-
-```python
-# Cấu hình cửa sổ quét (Sliding Window)
-WINDOW_SIZE = 4          # Số câu trong mỗi lần kiểm tra (Ngữ cảnh)
-WINDOW_OVERLAP = 3       # Mức độ nối liền ngữ cảnh giữa các lần trượt
-
-# Ngưỡng (Threshold)
-PROB_THRESHOLD = 0.48    # Ngưỡng bắt mức độ chắc chắn của AI trên 1 điểm ảnh (câu)
 ```

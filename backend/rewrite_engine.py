@@ -6,12 +6,6 @@ from rewrite_loader import RewriteModelLoader
 
 class RewriteEngine:
     def __init__(self, model_path: str = None):
-        """
-        Initialize rewrite engine
-        
-        Args:
-            model_path: Path to fine-tuned ViT5 model (optional, uses config default)
-        """
         self.loader = RewriteModelLoader()
         self.model, self.tokenizer, self.device = self.loader.load(model_path)
     
@@ -31,10 +25,8 @@ class RewriteEngine:
         mode_token = "[FIX]" if mode == "fix" else "[REWRITE]"
         
         if mode == "rewrite":
-            # Rewrite cả đoạn, không cần context
             return f"{mode_token} {target}"
         
-        # Fix mode với context
         parts = [mode_token]
         
         if prev_context and prev_context.strip():
@@ -109,9 +101,7 @@ class RewriteEngine:
         prev_context: Optional[str] = None,
         next_context: Optional[str] = None
     ) -> str:
-        """
-        Shortcut để viết lại 1 câu với mode [FIX]
-        """
+
         return self.rewrite(
             target=sentence,
             mode="fix",
@@ -120,7 +110,5 @@ class RewriteEngine:
         )
     
     def rewrite_paragraph(self, text: str) -> str:
-        """
-        Shortcut để viết lại cả đoạn với mode [REWRITE]
-        """
+
         return self.rewrite(target=text, mode="rewrite")

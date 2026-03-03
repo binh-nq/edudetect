@@ -1,36 +1,31 @@
 import os
 
 class Config:
-    # Model configuration (HuggingFace Hub repo IDs)
+    # Model configuration 
     MODEL_PATH = 'nqp426/phobert-ai-detect'
     MAX_LENGTH = 256
     DEVICE = "cuda" 
-    
-    # Global Gating Thresholds
-    T_HUMAN = 0.05    # → ALL_HUMAN
-    T_AI = 0.95       # → ALL_AI
-    
     # Sliding Window Configuration
-    WINDOW_SIZE = 4          # Số câu trong mỗi window
-    WINDOW_OVERLAP = 3       # Số câu overlap giữa các window
+    WINDOW_SIZE = 4         
+    WINDOW_OVERLAP = 3      
     
     # Scoring
-    PROB_THRESHOLD = 0.70     # Ngưỡng probability để đánh dấu câu AI
+    PROB_THRESHOLD = 0.70     
     
     # Text Processing
-    MIN_SENTENCE_LENGTH = 10  # Ký tự tối thiểu của câu hợp lệ
+    MIN_SENTENCE_LENGTH = 10  #
     
     # Inference
     BATCH_SIZE = 16         
     
     # Rewrite Model Configuration
     REWRITE_MODEL_PATH = 'nqp426/vit5-ai-rewrite'
-    REWRITE_MAX_INPUT = 512   # Max input length 
-    REWRITE_MAX_TARGET = 256  # Max target length
-    REWRITE_NUM_BEAMS = 4     # Beam search
+    REWRITE_MAX_INPUT = 512   
+    REWRITE_MAX_TARGET = 256 
+    REWRITE_NUM_BEAMS = 4     
     
     # Sigmoid Adjustment
-    SIGMOID_SCALE = 2.0      # Scaling factor cho sigmoid transformation
+    SIGMOID_SCALE = 2.0      
     
     @classmethod
     def validate_model_path(cls):

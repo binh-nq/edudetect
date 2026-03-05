@@ -58,6 +58,7 @@ venv\Scripts\activate
 source venv/bin/activate
 
 # Cài đặt thư viện
+cd backend
 pip install -r requirements.txt
 ```
 
